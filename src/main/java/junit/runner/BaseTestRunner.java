@@ -101,11 +101,11 @@ public abstract class BaseTestRunner implements TestListener {
         try {
             testClass = loadSuiteClass(suiteClassName);
         } catch (ClassNotFoundException e) {
-            String clazz = e.getMessage();
-            if (clazz == null) {
-                clazz = suiteClassName;
+            String className = e.getMessage();
+            if (className == null) {
+                className = suiteClassName;
             }
-            runFailed("Class not found \"" + clazz + "\"");
+            runFailed("Class not found \"" + className + "\"");
             return null;
         } catch (Exception e) {
             runFailed("Error: " + e.toString());
