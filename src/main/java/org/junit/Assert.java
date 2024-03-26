@@ -108,7 +108,7 @@ public class Assert {
      * @param actual actual value
      */
     public static void assertEquals(String message, Object expected,
-            Object actual) {
+                                    Object actual) {
         if (equalsRegardingNull(expected, actual)) {
             return;
         }
@@ -119,18 +119,6 @@ public class Assert {
         } else {
             failNotEquals(message, expected, actual);
         }
-    }
-
-    private static boolean equalsRegardingNull(Object expected, Object actual) {
-        if (expected == null) {
-            return actual == null;
-        }
-
-        return isEquals(expected, actual);
-    }
-
-    private static boolean isEquals(Object expected, Object actual) {
-        return expected.equals(actual);
     }
 
     /**
@@ -158,7 +146,7 @@ public class Assert {
      * @param actual the value to check against <code>unexpected</code>
      */
     public static void assertNotEquals(String message, Object unexpected,
-            Object actual) {
+                                       Object actual) {
         if (equalsRegardingNull(unexpected, actual)) {
             failEquals(message, actual);
         }
@@ -177,15 +165,6 @@ public class Assert {
         assertNotEquals(null, unexpected, actual);
     }
 
-    private static void failEquals(String message, Object actual) {
-        String formatted = "Values should be different. ";
-        if (message != null) {
-            formatted = message + ". ";
-        }
-
-        formatted += "Actual: " + actual;
-        fail(formatted);
-    }
 
     /**
      * Asserts that two longs are <b>not</b> equals. If they are, an
@@ -229,7 +208,7 @@ public class Assert {
      * considered equal.
      */
     public static void assertNotEquals(String message, double unexpected,
-            double actual, double delta) {
+                                       double actual, double delta) {
         if (!doubleIsDifferent(unexpected, actual, delta)) {
             failEquals(message, Double.valueOf(actual));
         }
@@ -281,7 +260,7 @@ public class Assert {
      * actual values
      */
     public static void assertArrayEquals(String message, Object[] expecteds,
-            Object[] actuals) throws ArrayComparisonFailure {
+                                         Object[] actuals) throws ArrayComparisonFailure {
         internalArrayEquals(message, expecteds, actuals);
     }
 
@@ -312,7 +291,7 @@ public class Assert {
      * @param actuals boolean array with expected values.
      */
     public static void assertArrayEquals(String message, boolean[] expecteds,
-            boolean[] actuals) throws ArrayComparisonFailure {
+                                         boolean[] actuals) throws ArrayComparisonFailure {
         internalArrayEquals(message, expecteds, actuals);
     }
 
@@ -339,7 +318,7 @@ public class Assert {
      * @param actuals byte array with actual values
      */
     public static void assertArrayEquals(String message, byte[] expecteds,
-            byte[] actuals) throws ArrayComparisonFailure {
+                                         byte[] actuals) throws ArrayComparisonFailure {
         internalArrayEquals(message, expecteds, actuals);
     }
 
@@ -364,7 +343,7 @@ public class Assert {
      * @param actuals char array with actual values
      */
     public static void assertArrayEquals(String message, char[] expecteds,
-            char[] actuals) throws ArrayComparisonFailure {
+                                         char[] actuals) throws ArrayComparisonFailure {
         internalArrayEquals(message, expecteds, actuals);
     }
 
@@ -389,7 +368,7 @@ public class Assert {
      * @param actuals short array with actual values
      */
     public static void assertArrayEquals(String message, short[] expecteds,
-            short[] actuals) throws ArrayComparisonFailure {
+                                         short[] actuals) throws ArrayComparisonFailure {
         internalArrayEquals(message, expecteds, actuals);
     }
 
@@ -414,7 +393,7 @@ public class Assert {
      * @param actuals int array with actual values
      */
     public static void assertArrayEquals(String message, int[] expecteds,
-            int[] actuals) throws ArrayComparisonFailure {
+                                         int[] actuals) throws ArrayComparisonFailure {
         internalArrayEquals(message, expecteds, actuals);
     }
 
@@ -439,7 +418,7 @@ public class Assert {
      * @param actuals long array with actual values
      */
     public static void assertArrayEquals(String message, long[] expecteds,
-            long[] actuals) throws ArrayComparisonFailure {
+                                         long[] actuals) throws ArrayComparisonFailure {
         internalArrayEquals(message, expecteds, actuals);
     }
 
@@ -467,7 +446,7 @@ public class Assert {
      * considered equal.
      */
     public static void assertArrayEquals(String message, double[] expecteds,
-            double[] actuals, double delta) throws ArrayComparisonFailure {
+                                         double[] actuals, double delta) throws ArrayComparisonFailure {
         new InexactComparisonCriteria(delta).arrayEquals(message, expecteds, actuals);
     }
 
@@ -498,7 +477,7 @@ public class Assert {
      * considered equal.
      */
     public static void assertArrayEquals(String message, float[] expecteds,
-            float[] actuals, float delta) throws ArrayComparisonFailure {
+                                         float[] actuals, float delta) throws ArrayComparisonFailure {
         new InexactComparisonCriteria(delta).arrayEquals(message, expecteds, actuals);
     }
 
@@ -516,23 +495,7 @@ public class Assert {
         assertArrayEquals(null, expecteds, actuals, delta);
     }
 
-    /**
-     * Asserts that two object arrays are equal. If they are not, an
-     * {@link AssertionError} is thrown with the given message. If
-     * <code>expecteds</code> and <code>actuals</code> are <code>null</code>,
-     * they are considered equal.
-     *
-     * @param message the identifying message for the {@link AssertionError} (<code>null</code>
-     * okay)
-     * @param expecteds Object array or array of arrays (multi-dimensional array) with
-     * expected values.
-     * @param actuals Object array or array of arrays (multi-dimensional array) with
-     * actual values
-     */
-    private static void internalArrayEquals(String message, Object expecteds,
-            Object actuals) throws ArrayComparisonFailure {
-        new ExactComparisonCriteria().arrayEquals(message, expecteds, actuals);
-    }
+
 
     /**
      * Asserts that two doubles are equal to within a positive delta.
@@ -550,7 +513,7 @@ public class Assert {
      * considered equal.
      */
     public static void assertEquals(String message, double expected,
-            double actual, double delta) {
+                                    double actual, double delta) {
         if (doubleIsDifferent(expected, actual, delta)) {
             failNotEquals(message, Double.valueOf(expected), Double.valueOf(actual));
         }
@@ -572,7 +535,7 @@ public class Assert {
      * considered equal.
      */
     public static void assertEquals(String message, float expected,
-            float actual, float delta) {
+                                    float actual, float delta) {
         if (floatIsDifferent(expected, actual, delta)) {
             failNotEquals(message, Float.valueOf(expected), Float.valueOf(actual));
         }
@@ -594,33 +557,12 @@ public class Assert {
      * considered equal.
      */
     public static void assertNotEquals(String message, float unexpected,
-            float actual, float delta) {
+                                       float actual, float delta) {
         if (!floatIsDifferent(unexpected, actual, delta)) {
             failEquals(message, Float.valueOf(actual));
         }
     }
 
-    private static boolean doubleIsDifferent(double d1, double d2, double delta) {
-        if (Double.compare(d1, d2) == 0) {
-            return false;
-        }
-        if ((Math.abs(d1 - d2) <= delta)) {
-            return false;
-        }
-
-        return true;
-    }
-
-    private static boolean floatIsDifferent(float f1, float f2, float delta) {
-        if (Float.compare(f1, f2) == 0) {
-            return false;
-        }
-        if ((Math.abs(f1 - f2) <= delta)) {
-            return false;
-        }
-
-        return true;
-    }
 
     /**
      * Asserts that two longs are equal. If they are not, an
@@ -665,7 +607,7 @@ public class Assert {
      */
     @Deprecated
     public static void assertEquals(String message, double expected,
-            double actual) {
+                                    double actual) {
         fail("Use assertEquals(expected, actual, delta) to compare floating-point numbers");
     }
 
@@ -748,13 +690,7 @@ public class Assert {
         assertNull(null, object);
     }
 
-    private static void failNotNull(String message, Object actual) {
-        String formatted = "";
-        if (message != null) {
-            formatted = message + " ";
-        }
-        fail(formatted + "expected null, but was:<" + actual + ">");
-    }
+
 
     /**
      * Asserts that two objects refer to the same object. If they are not, an
@@ -794,7 +730,7 @@ public class Assert {
      * @param actual the object to compare to <code>unexpected</code>
      */
     public static void assertNotSame(String message, Object unexpected,
-            Object actual) {
+                                     Object actual) {
         if (unexpected == actual) {
             failSame(message);
         }
@@ -812,28 +748,7 @@ public class Assert {
         assertNotSame(null, unexpected, actual);
     }
 
-    private static void failSame(String message) {
-        String formatted = "";
-        if (message != null) {
-            formatted = message + " ";
-        }
-        fail(formatted + "expected not same");
-    }
 
-    private static void failNotSame(String message, Object expected,
-            Object actual) {
-        String formatted = "";
-        if (message != null) {
-            formatted = message + " ";
-        }
-        fail(formatted + "expected same:<" + expected + "> was not:<" + actual
-                + ">");
-    }
-
-    private static void failNotEquals(String message, Object expected,
-            Object actual) {
-        fail(format(message, expected, actual));
-    }
 
     static String format(String message, Object expected, Object actual) {
         String formatted = "";
@@ -852,15 +767,7 @@ public class Assert {
         }
     }
 
-    private static String formatClass(Class<?> value) {
-        String className = value.getCanonicalName();
-        return className == null ? value.getName() : className;
-    }
 
-    private static String formatClassAndValue(Object value, String valueString) {
-        String className = value == null ? "null" : value.getClass().getName();
-        return className + "<" + valueString + ">";
-    }
 
     /**
      * Asserts that two object arrays are equal. If they are not, an
@@ -878,7 +785,7 @@ public class Assert {
      */
     @Deprecated
     public static void assertEquals(String message, Object[] expecteds,
-            Object[] actuals) {
+                                    Object[] actuals) {
         assertArrayEquals(message, expecteds, actuals);
     }
 
@@ -960,7 +867,7 @@ public class Assert {
      */
     @Deprecated
     public static <T> void assertThat(String reason, T actual,
-            Matcher<? super T> matcher) {
+                                      Matcher<? super T> matcher) {
         MatcherAssert.assertThat(reason, actual, matcher);
     }
 
@@ -977,7 +884,7 @@ public class Assert {
      * @since 4.13
      */
     public static <T extends Throwable> T assertThrows(Class<T> expectedThrowable,
-            ThrowingRunnable runnable) {
+                                                       ThrowingRunnable runnable) {
         return assertThrows(null, expectedThrowable, runnable);
     }
 
@@ -996,7 +903,7 @@ public class Assert {
      * @since 4.13
      */
     public static <T extends Throwable> T assertThrows(String message, Class<T> expectedThrowable,
-            ThrowingRunnable runnable) {
+                                                       ThrowingRunnable runnable) {
         try {
             runnable.run();
         } catch (Throwable actualThrown) {
@@ -1026,6 +933,110 @@ public class Assert {
                 .format("expected %s to be thrown, but nothing was thrown",
                         formatClass(expectedThrowable));
         throw new AssertionError(notThrownMessage);
+    }
+
+    //Derniere_public
+
+    private static String formatClass(Class<?> value) {
+        String className = value.getCanonicalName();
+        return className == null ? value.getName() : className;
+    }
+
+    private static String formatClassAndValue(Object value, String valueString) {
+        String className = value == null ? "null" : value.getClass().getName();
+        return className + "<" + valueString + ">";
+    }
+
+    private static void failSame(String message) {
+        String formatted = "";
+        if (message != null) {
+            formatted = message + " ";
+        }
+        fail(formatted + "expected not same");
+    }
+
+    private static void failNotSame(String message, Object expected,
+                                    Object actual) {
+        String formatted = "";
+        if (message != null) {
+            formatted = message + " ";
+        }
+        fail(formatted + "expected same:<" + expected + "> was not:<" + actual
+                + ">");
+    }
+
+    private static void failNotEquals(String message, Object expected,
+                                      Object actual) {
+        fail(format(message, expected, actual));
+    }
+    private static void failNotNull(String message, Object actual) {
+        String formatted = "";
+        if (message != null) {
+            formatted = message + " ";
+        }
+        fail(formatted + "expected null, but was:<" + actual + ">");
+    }
+
+    private static boolean doubleIsDifferent(double d1, double d2, double delta) {
+        if (Double.compare(d1, d2) == 0) {
+            return false;
+        }
+        if ((Math.abs(d1 - d2) <= delta)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static boolean floatIsDifferent(float f1, float f2, float delta) {
+        if (Float.compare(f1, f2) == 0) {
+            return false;
+        }
+        if ((Math.abs(f1 - f2) <= delta)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Asserts that two object arrays are equal. If they are not, an
+     * {@link AssertionError} is thrown with the given message. If
+     * <code>expecteds</code> and <code>actuals</code> are <code>null</code>,
+     * they are considered equal.
+     *
+     * @param message the identifying message for the {@link AssertionError} (<code>null</code>
+     * okay)
+     * @param expecteds Object array or array of arrays (multi-dimensional array) with
+     * expected values.
+     * @param actuals Object array or array of arrays (multi-dimensional array) with
+     * actual values
+     */
+    private static void internalArrayEquals(String message, Object expecteds,
+                                            Object actuals) throws ArrayComparisonFailure {
+        new ExactComparisonCriteria().arrayEquals(message, expecteds, actuals);
+    }
+
+    private static void failEquals(String message, Object actual) {
+        String formatted = "Values should be different. ";
+        if (message != null) {
+            formatted = message + ". ";
+        }
+
+        formatted += "Actual: " + actual;
+        fail(formatted);
+    }
+
+    private static boolean isEquals(Object expected, Object actual) {
+        return expected.equals(actual);
+    }
+
+    private static boolean equalsRegardingNull(Object expected, Object actual) {
+        if (expected == null) {
+            return actual == null;
+        }
+
+        return isEquals(expected, actual);
     }
 
     private static String buildPrefix(String message) {
