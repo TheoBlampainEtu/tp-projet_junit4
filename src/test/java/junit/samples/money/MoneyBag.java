@@ -59,11 +59,6 @@ public class MoneyBag implements IMoney {
 
     @Override
     public boolean equals(Object anObject) {
-        if (isZero()) {
-            if (anObject instanceof IMoney) {
-                return ((IMoney) anObject).isZero();
-            }
-        }
 
         if (anObject instanceof MoneyBag) {
             MoneyBag aMoneyBag = (MoneyBag) anObject;

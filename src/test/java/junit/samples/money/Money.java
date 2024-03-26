@@ -44,11 +44,6 @@ public class Money implements IMoney {
 
     @Override
     public boolean equals(Object anObject) {
-        if (isZero()) {
-            if (anObject instanceof IMoney) {
-                return ((IMoney) anObject).isZero();
-            }
-        }
         if (anObject instanceof Money) {
             Money aMoney = (Money) anObject;
             return aMoney.currency().equals(currency())
