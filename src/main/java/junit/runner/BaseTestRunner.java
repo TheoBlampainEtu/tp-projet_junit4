@@ -93,7 +93,7 @@ public abstract class BaseTestRunner implements TestListener {
      * a template method, subclasses override runFailed(), clearStatus().
      */
     public Test getTest(String suiteClassName) {
-        if (suiteClassName.length() <= 0) {
+        if (suiteClassName.length() == 0) {
             clearStatus();
             return null;
         }
