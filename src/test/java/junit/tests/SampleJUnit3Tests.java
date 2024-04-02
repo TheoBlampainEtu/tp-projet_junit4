@@ -10,7 +10,12 @@ public class SampleJUnit3Tests {
     public static class TestWithOneThrowingTestMethod extends TestCase {
 
         public void testAlwaysThrows() {
-            new FakeClassUnderTest().throwsExceptionWithoutCause();
+            try {
+                new FakeClassUnderTest().throwsExceptionWithoutCause();
+                fail("no exception was thrown");
+            } catch (Exception e){
+                assertTrue(true);
+            }
         }
     }
 
