@@ -142,6 +142,10 @@ public class FrameworkMethod extends FrameworkMember<FrameworkMethod> {
     }
 
     @Override
+    /*
+        return true if the other FrameworkMethod as the same name and the same argument (types) in the same order,
+        else return false
+     */
     public boolean isShadowedBy(FrameworkMethod other) {
         if (!other.getName().equals(getName())) {
             return false;
