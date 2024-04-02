@@ -46,8 +46,13 @@ public class Money implements IMoney {
     public boolean equals(Object anObject) {
         if (anObject instanceof Money) {
             Money aMoney = (Money) anObject;
-            return aMoney.currency().equals(currency())
-                    && amount() == aMoney.amount();
+            if(amount() == aMoney.amount()){
+                if(aMoney.currency().equals(currency())){
+                    return true;
+                } else {
+                    return isZero();
+                }
+            }
         }
         return false;
     }

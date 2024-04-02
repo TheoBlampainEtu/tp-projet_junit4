@@ -66,6 +66,10 @@ public class MoneyBag implements IMoney {
                 return false;
             }
 
+            if(isZero()){
+                return ((MoneyBag) anObject).isZero();
+            }
+
             for (Money each : fMonies) {
                 if (!aMoneyBag.contains(each)) {
                     return false;
