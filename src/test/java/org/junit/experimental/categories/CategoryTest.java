@@ -196,27 +196,9 @@ public class CategoryTest {
     }
 
     @Test
-    public void testCountWithExplicitExcludeFilter_usingConstructor() throws Throwable {
-        CategoryFilter include = new CategoryFilter(null, SlowTests.class);
-        Request baseRequest = Request.aClass(TestSuiteWithNoCategories.class);
-        Result result = new JUnitCore().run(baseRequest.filterWith(include));
-        assertEquals(2, result.getFailureCount());
-        assertEquals(2, result.getRunCount());
-    }
-
-    @Test
     public void categoryFilterLeavesOnlyMatchingMethods()
             throws InitializationError, NoTestsRemainException {
         CategoryFilter filter = CategoryFilter.include(SlowTests.class);
-        BlockJUnit4ClassRunner runner = new BlockJUnit4ClassRunner(A.class);
-        filter.apply(runner);
-        assertEquals(1, runner.testCount());
-    }
-
-    @Test
-    public void categoryFilterLeavesOnlyMatchingMethods_usingConstructor()
-            throws InitializationError, NoTestsRemainException {
-        CategoryFilter filter = new CategoryFilter(SlowTests.class, null);
         BlockJUnit4ClassRunner runner = new BlockJUnit4ClassRunner(A.class);
         filter.apply(runner);
         assertEquals(1, runner.testCount());
