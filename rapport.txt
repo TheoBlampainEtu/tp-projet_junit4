@@ -10,6 +10,7 @@ Modifications :
   - Modification d'un test pour une utilisation de "try{} catch(){}" (le test est sensé renvoyé une erreur mais échouait en ayant le comportement attendu) : https://github.com/TheoBlampainEtu/tp-projet_junit4/commit/b63b7cd6f3f75ec8155e1015591074bb29121537
   - Déplacement du "isZero()" dans la méthode equals de Money et MoneyBag (fusionne deux "if(même conditions)" en 1 seul "if(condition)" -> réduit la complexité) : https://github.com/TheoBlampainEtu/tp-projet_junit4/commit/6d12ddce197993e063a0e0a89d2f1d4405bad632
   - Ajout de commentaire à la méthode "isShadowedBy()" (méthde complexe sans commentaire) : https://github.com/TheoBlampainEtu/tp-projet_junit4/commit/2daf7a06f945293edbba570cd2c294340ff87190
+  - Suppression de tests sur du code déprécié (empêche la réaparition du code déprécié à cause de tests rouge l'appelant) : https://github.com/TheoBlampainEtu/tp-projet_junit4/commit/838d5775952df9d9a3c96796a3f2c14b71b227a3
 
 Différence par rapports aux modifications annoncées :
   - "clazz" a été renommée en "className" au lieu de "class" car "class" est un mot-clé du langage, cependant "clazz" restait trop confus, d'autant plus que la variable fait référence au nom de la classe et non son type.
