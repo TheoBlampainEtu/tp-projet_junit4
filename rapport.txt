@@ -1,0 +1,22 @@
+Modifications :
+
+  - Suppression de Sub.java (classe vide et non-appelée) : https://github.com/TheoBlampainEtu/tp-projet_junit4/commit/fde660101b6d40ca18060ddb2a8ee8672c39574e
+  - Réorganisation de la classe Assert.java (les méthodes publiques et privées étaient mélangées) : https://github.com/TheoBlampainEtu/tp-projet_junit4/commit/ba5c9ad2410ed5b39ac4c54272abc36d7e65e97a
+  - Remplacement d'un "<=0" en "==0" (impliquait que ".lenght" puisse renvoyer une valeur négative) : https://github.com/TheoBlampainEtu/tp-projet_junit4/commit/54f851b564c89ea49c1a230c9bb7741086ebff25
+  - Remplacement d'un "==0" en "isEmpty()" (enlève un nombre magique, plus de clarté) : https://github.com/TheoBlampainEtu/tp-projet_junit4/commit/0e0fb1a458e3cc1a8aff1f6e9525d96c519ef28d
+  - Supression de la mention "final" de méthodes "private static final" (redondant) : https://github.com/TheoBlampainEtu/tp-projet_junit4/commit/55ba4efabd47d4b2f7b063100e78caf275a753d2
+  - Renommage de la variable "clazz" en "className" (variable mal nommée) : https://github.com/TheoBlampainEtu/tp-projet_junit4/commit/c9749aabea46c32b1473495e2e61a0ea82021bfd
+  - Remplacement d'un "if(conditions){return false;}" par "return !(conditions)" (code plus lisible, branche "if" inutile) : https://github.com/TheoBlampainEtu/tp-projet_junit4/commit/7eed232c8828d51d50123aa7a285d12aa2dfa37f
+  - Modification d'un test pour une utilisation de "try{} catch(){}" (le test est sensé renvoyé une erreur mais échouait en ayant le comportement attendu) : https://github.com/TheoBlampainEtu/tp-projet_junit4/commit/b63b7cd6f3f75ec8155e1015591074bb29121537
+  - Déplacement du "isZero()" dans la méthode equals de Money et MoneyBag (fusionne deux "if(même conditions)" en 1 seul "if(condition)" -> réduit la complexité) : https://github.com/TheoBlampainEtu/tp-projet_junit4/commit/6d12ddce197993e063a0e0a89d2f1d4405bad632
+  - Ajout de commentaire à la méthode "isShadowedBy()" (méthde complexe sans commentaire) : https://github.com/TheoBlampainEtu/tp-projet_junit4/commit/2daf7a06f945293edbba570cd2c294340ff87190
+
+Différence par rapports aux modifications annoncées :
+  - "clazz" a été renommée en "className" au lieu de "class" car "class" est un mot-clé du langage, cependant "clazz" restait trop confus, d'autant plus que la variable fait référence au nom de la classe et non son type.
+  - "isZero()" a été déplacée et non supprimée car les tests unitaires indiquaient que 2 objets Money (ou MoneyBag) sont égaux qu'importe leur monnaie s'ils ont tous deux une valeur monétaire nulle.
+  - Remplacer "==0" par "isEmpty()" est une suite logique à la modification précédete que je n'avait pas identifié précédement (car la modification précédente avait un autre but).
+  - J'ai remarqué que la méthode "isShadowedBy()" n'avait pas de commentaire malgré sa forte complexité.
+
+Bénéfices des modifications :
+  Les modifications que j'ai apporté au projet ont, dans la majorité, pour but de rendre le code plus lisible et compréhensible.
+  Je n'ai pu trouver que peut d'optimisations possibles, dans les test unitaires pour la plupart, en raison de la forte optimisation du code à l'origine.
